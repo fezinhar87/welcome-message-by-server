@@ -1,0 +1,221 @@
+{
+  "name": "welcomesetup",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "psbZB",
+  "actions": [
+    {
+      "member": "1",
+      "varName": "",
+      "permission": "MANAGE_CHANNELS",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Member Permissions"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "**ERROR:** You don't have permissions to use this command.\nRequired: `Manage Channel` Permission.",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "name": "Delete Message"
+    },
+    {
+      "info": "4",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "channel",
+      "name": "Store Command Params"
+    },
+    {
+      "storage": "1",
+      "varName": "channel",
+      "comparison": "0",
+      "value": "",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "**Wrong Format:**\nsetupwelcome <#channel>",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "The welcome channel is now ${mentionedChannel}.",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "changeType": "0",
+      "value": "tempVars(\"channel\")",
+      "storage": "2",
+      "varName": "welcome-channel",
+      "name": "Control Variable"
+    },
+    {
+      "storage": "2",
+      "varName": "welcome-channel",
+      "name": "Save Variable"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "ok now to the message what it will be?",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "filter": "content.length > 0 && author.id === '${member.id}'",
+      "max": "1",
+      "time": "60000",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "1",
+      "iffalseVal": "",
+      "storage2": "0",
+      "varName2": "",
+      "name": "Await Response Call Action"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "info": "6",
+      "storage": "2",
+      "varName2": "masssge",
+      "name": "Store Member Info"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "ok done",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "info": "16",
+      "storage": "1",
+      "varName2": "ava",
+      "name": "Store Member Info"
+    },
+    {
+      "url": "resources/welcome-image.png",
+      "storage": "1",
+      "varName": "example",
+      "name": "Create Image"
+    },
+    {
+      "url": "${tempVars(\"ava\")}",
+      "storage": "1",
+      "varName": "example2",
+      "name": "Create Image"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "info": "36",
+      "storage": "1",
+      "varName2": "members",
+      "name": "Store Server Info"
+    },
+    {
+      "storage": "1",
+      "varName": "example",
+      "width": "750",
+      "height": "250",
+      "name": "Resize Image"
+    },
+    {
+      "storage": "1",
+      "varName": "example",
+      "x": "250",
+      "y": "100",
+      "font": "fonts/Asimov.fnt",
+      "width": "",
+      "text": "(user) ${serverVars(\"masssge\")}",
+      "name": "Draw Text on Image"
+    },
+    {
+      "storage": "1",
+      "varName": "example",
+      "x": "250",
+      "y": "135",
+      "font": "fonts/Asimov.fnt",
+      "width": "",
+      "text": "you are the ${tempVars(\"members\")} member in our server!",
+      "name": "Draw Text on Image"
+    },
+    {
+      "storage": "1",
+      "varName": "example2",
+      "width": "200",
+      "height": "200",
+      "name": "Resize Image"
+    },
+    {
+      "storage": "1",
+      "varName": "example",
+      "storage2": "1",
+      "varName2": "${tempVars(\"example2\")}",
+      "x": "10",
+      "y": "25",
+      "mask": "0",
+      "name": "Draw Image on Image"
+    },
+    {
+      "storage": "1",
+      "varName": "example",
+      "channel": "0",
+      "varName2": "",
+      "message": "",
+      "name": "Send Image"
+    },
+    {
+      "comment": "credits to bluelabel for the welcome massge ",
+      "color": "#00ffff",
+      "name": "Comment"
+    },
+    {
+      "comment": "and to tired to make it work by server",
+      "color": "#00ffff",
+      "name": "Comment"
+    }
+  ]
+}
